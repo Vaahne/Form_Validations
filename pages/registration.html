@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <script defer src="https://kit.fontawesome.com/d8f052c6cf.js" crossorigin="anonymous"  ></script>
+  <script  defer type="text/javascript" src="../scripts/scripts.js"></script>
+</head>
+<body>
+    <!-- Registration Side -->
+    <div>
+        <div class="form-container">
+            <h1>Register</h1>
+            <p>Please provide your information below.</p>
+
+            <!-- Registration Form -->
+            <form id="registration">
+            <input name="username" type="text" placeholder="Username" id="username" minlength="4" required/>
+            <span class="input-icon"><i class="fa-solid fa-user"></i></span><br />
+
+            <input name="email" type="text" placeholder="Email"  id="email"/>
+            <span class="input-icon"><i class="fa-solid fa-envelope"></i></span
+            ><br />
+
+            <input name="password" type="password" placeholder="Password" id="password" minlength="12" required/>
+            <span class="input-icon"><i class="fa-solid fa-key"></i></span><br />
+
+            <input name="passwordCheck" type="password" placeholder="Repeat Password" id="passwordCheck" minlength="12"/>
+            <span class="input-icon"><i class="fa-solid fa-key"></i></span
+            ><br /><br />
+
+            <div class="flex-row">
+                <input name="terms" type="checkbox" required/>
+                <label for="terms"
+                >I agree to the&nbsp;<a href="#">Terms of Use</a>.</label
+                >
+                <input type="submit" value="Register" />
+            </div>
+            </form>
+      </div>
+      <!-- Error Display Container -->
+    <div id="errorDisplay"></div>
+</body>
+</html>

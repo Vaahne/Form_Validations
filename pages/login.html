@@ -7,7 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../styles/styles.css">
     <script defer src="https://kit.fontawesome.com/d8f052c6cf.js" crossorigin="anonymous"  ></script>
-    <script defer src="../scripts/scripts.js"></script>
+    <script defer src="../scripts/login.js"></script>
 </head>
 
 <body>
@@ -18,13 +18,13 @@
             
                 <!-- Login Form -->
                 <form id="login" style="border-bottom: 1px solid lightgray;">
-                    <input name="username" type="text" placeholder="Username" />
+                    <input name="username" type="text" placeholder="Username" id="userName" required/>
                     <span class="input-icon"><i class="fa-solid fa-user"></i></span><br />
 
-                    <input name="password" type="text" placeholder="Password" />
+                    <input name="password" type="password" placeholder="Password" id="password" required/>
                     <span class="input-icon"><i class="fa-solid fa-key"></i></span><br /><br />
 
-                    <div class="flex-row">
+                    <div class="flex-row" >
                         <input name="persist" type="checkbox" />
                         <label for="persist">Keep me logged in.</label>
                         <input type="submit" value="Login" />

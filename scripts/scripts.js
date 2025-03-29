@@ -81,10 +81,10 @@ function validateEmail(el){
 }
 function validatePassword(el,userName){
     const passwordVal = el.value;
-    const userNameVal = userName.value.toLowerCase();
-    alert(`User name is ${userNameVal} with pase ${passwordVal}`);
+    const userNameVal = userName.value.toLowerCase(); 
     const passwordRegEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+={}\[\]:;"'<>,.?\/\\|-]).{8,}$/
-    if(passwordVal.toLowerCase() == "password"){
+    
+    if(passwordVal.toLowerCase().includes("password") ){
         let h1 = document.createElement ("p");
         err.style.display = "block";
         h1.textContent = "Cannot have password as password"; 

@@ -4,28 +4,74 @@
     <title>Form Validation Practice</title>
     <link rel="stylesheet" href="./styles/styles.css" />
     <!-- Font Awesome for Icons -->
-    <script defer src="https://kit.fontawesome.com/d8f052c6cf.js"
+    <script
+      src="https://kit.fontawesome.com/d8f052c6cf.js"
       crossorigin="anonymous"
     ></script>
-    <script  defer type="text/javascript" src="./scripts/scripts.js"></script>
-    <style>
-        .linksDiv{
-            background: #ddd;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            margin: 10rem;
-            padding: 2rem;
-        }
-    </style>
+    <script defer type="text/javascript" src="./scripts/scripts.js"></script>
   </head>
   <body>
     <!-- Container for entire form. -->
-    <div class="linksDiv">
-        <a href="./pages/login.html">Login</a>
-        <a href="./pages/registration.html">Register</a>     
+    <div class="form-container">
+      <!-- Registration Side -->
+      <div>
+        <h1>Register</h1>
+        <p>Please provide your information below.</p>
+
+        <!-- Registration Form -->
+        <form id="registration">
+          <input name="username" type="text" placeholder="Username" id="username" required/>
+          <span class="input-icon"><i class="fa-solid fa-user"></i></span><br />
+
+          <input name="email" type="text" placeholder="Email" id="email" required />
+          <span class="input-icon"><i class="fa-solid fa-envelope"></i></span
+          ><br />
+
+          <input name="password" type="password" placeholder="Password" id="password" required/>
+          <span class="input-icon"><i class="fa-solid fa-key"></i></span><br />
+
+          <input name="passwordCheck" type="password" placeholder="Repeat Password" id="passwordCheck"
+          />
+          <span class="input-icon"><i class="fa-solid fa-key"></i></span
+          ><br /><br />
+
+          <div class="flex-row">
+            <input name="terms" type="checkbox" required />
+            <label for="terms"
+              >I agree to the&nbsp;<a href="#">Terms of Use</a>.</label
+            >
+            <input type="submit" value="Register" />
+          </div>
+        </form>
+      </div>
+
+      <!-- Login Side -->
+      <div>
+        <h1>Login</h1>
+        <p>Login using your account information.</p>
+
+        <!-- Login Form -->
+        <form id="login" style="border-bottom: 1px solid lightgray;">
+          <input name="username" type="text" placeholder="Username" id="userName" required/>
+          <span class="input-icon"><i class="fa-solid fa-user"></i></span><br />
+
+          <input name="password" type="password" placeholder="Password" id="password" required />
+          <span class="input-icon"><i class="fa-solid fa-key"></i></span
+          ><br /><br />
+
+          <div class="flex-row">
+            <input name="persist" type="checkbox" />
+            <label for="persist">Keep me logged in.</label>
+            <input type="submit" value="Login" />
+          </div>
+          <br /><br />
+        </form>
+
+        <p>Forgot your <a href="#">Username</a> or <a href="#">Password?</a></p>
+      </div>
     </div>
-      
-    
+
+    <!-- Error Display Container -->
+    <div id="errorDisplay"></div>
   </body>
 </html>

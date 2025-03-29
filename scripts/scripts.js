@@ -1,20 +1,29 @@
 //  Registration form
-let register_form = document.getElementById("registration");
-let err = document.getElementById("errorDisplay");
+const register_form = document.getElementById("registration");
+const err = document.getElementById("errorDisplay");
+
+const userName = register_form.querySelector("#username");
+const email = register_form.querySelector("#email");
+const password = register_form.querySelector("#password");
+const passwordCheck = register_form.querySelector("#passwordCheck");
 
 
 register_form.addEventListener('submit',registerSubmit);
+userName.addEventListener('focus',removeErr);
+email.addEventListener('focus',removeErr);
+password.addEventListener('focus',removeErr);
+passwordCheck.addEventListener('focus',removeErr);
+
+function removeErr(e){
+    e.preventDefault();
+    err.style.display ="none";
+}
+
 
 function registerSubmit(e){
     e.preventDefault();
     err.textContent = "";
-    err.style.display = "none";
-    
-
-    let userName = register_form.querySelector("#username");
-    let email = register_form.querySelector("#email");
-    let password = register_form.querySelector("#password");
-    let passwordCheck = register_form.querySelector("#passwordCheck");
+    err.style.display = "none";    
 
     if( validateuserName(userName) && 
         validateEmail(email) && 
@@ -29,15 +38,14 @@ function registerSubmit(e){
         
         let storedUsers = JSON.parse(localStorage.getItem("users")) || []; //creates empty array if no local storage
         let exists = false;
-        for(s of storedUsers){
-            if(s.userName == userName.value.toLowerCase()){
-                err.textContent = "User Already exists!!"
+        for(s of storedUsers){  
+            if(s.userName == userName.value.toLowerCase()){ //checks wheather user exist in localstorage
+                err.textContent = `${s.userName} already exists`;
                 err.style.display = "block";
                 exists = true;
                 break;
             }
-        }
-        
+        }        
         if(!exists){
             storedUsers.push(user);
             localStorage.setItem("users",JSON.stringify(storedUsers));
@@ -111,17 +119,21 @@ function validatePasswordCheck(ps1,ps2){
 
 
 // Login Form
-let loginForm = document.getElementById("login");
+const loginForm = document.getElementById("login");
+const userNameLogin = loginForm.querySelector("#userName");
+const passwordLogin = loginForm.querySelector("#password");
+const persistCheckBox = loginForm.querySelector("#persist");
+
+userNameLogin.addEventListener('focus',removeErr);
+passwordLogin.addEventListener('focus',removeErr);
 
 loginForm.addEventListener('submit',loginValidation);
 
 function loginValidation(e){
     e.preventDefault();
-    err.style.display = "none";
-    
-    let userName = loginForm.querySelector("#userName");
-    let password = loginForm.querySelector("#password");
-
+    err.textContent = "";
+    err.style.display = "none"; 
+   
     let users = JSON.parse(localStorage.getItem("users")) || [];
 
     if(users.length == 0){
@@ -132,8 +144,11 @@ function loginValidation(e){
         let found = false;
         
         for(user of users){            
-            if(user.userName === userName.value && user.password === password.value){
-                alert(`Welcome ${userName.value}`);
+            if(user.userName === userNameLogin.value && user.password === passwordLogin.value){
+                if(persistCheckBox.checked)
+                    alert(`Welcome ${userNameLogin.value} , you decided to keep logged inn!!!`);
+                else
+                    alert(`Welcome ${userNameLogin.value}!!!`);
                 loginForm.reset();
                 found = true;
                 return;
@@ -144,9 +159,6 @@ function loginValidation(e){
             err.style.display = "block";
             h1.textContent = "User doesnot exist Please register !!!"; 
             err.appendChild(h1);     
-        }
-            
+        }            
     }
-
-
 }

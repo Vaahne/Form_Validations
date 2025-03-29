@@ -20,17 +20,17 @@
 
         <!-- Registration Form -->
         <form id="registration">
-          <input name="username" type="text" placeholder="Username" id="username" required/>
+          <input name="username" type="text" placeholder="Username" id="username" required minlength="4"/>
           <span class="input-icon"><i class="fa-solid fa-user"></i></span><br />
 
           <input name="email" type="text" placeholder="Email" id="email" required />
           <span class="input-icon"><i class="fa-solid fa-envelope"></i></span
           ><br />
 
-          <input name="password" type="password" placeholder="Password" id="password" required/>
+          <input name="password" type="password" placeholder="Password" id="password" minlength="12" required/>
           <span class="input-icon"><i class="fa-solid fa-key"></i></span><br />
 
-          <input name="passwordCheck" type="password" placeholder="Repeat Password" id="passwordCheck"
+          <input name="passwordCheck" type="password" placeholder="Repeat Password" minlength="12" id="passwordCheck"
           />
           <span class="input-icon"><i class="fa-solid fa-key"></i></span
           ><br /><br />
@@ -60,7 +60,7 @@
           ><br /><br />
 
           <div class="flex-row">
-            <input name="persist" type="checkbox" />
+            <input name="persist" type="checkbox" id="persist"/>
             <label for="persist">Keep me logged in.</label>
             <input type="submit" value="Login" />
           </div>

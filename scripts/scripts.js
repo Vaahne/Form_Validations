@@ -28,7 +28,7 @@ function registerSubmit(e){
     if( validateuserName(userName) && 
         validateEmail(email) && 
         validatePassword(password,userName) && 
-    validatePasswordCheck(password,passwordCheck)){
+        validatePasswordCheck(password,passwordCheck)){
         err.style.display = "none";
         let user = {
             userName : userName.value.toLowerCase(),
@@ -80,9 +80,9 @@ function validateEmail(el){
     return true;
 }
 function validatePassword(el,userName){
-    let passwordVal = el.value;
-    let userNameVal = userName.value;
-    
+    const passwordVal = el.value;
+    const userNameVal = userName.value.toLowerCase();
+    alert(`User name is ${userNameVal} with pase ${passwordVal}`);
     const passwordRegEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+={}\[\]:;"'<>,.?\/\\|-]).{8,}$/
     if(passwordVal.toLowerCase() == "password"){
         let h1 = document.createElement ("p");
@@ -90,7 +90,7 @@ function validatePassword(el,userName){
         h1.textContent = "Cannot have password as password"; 
         err.appendChild(h1);     
         return false;   
-    }else if(passwordVal.includes(userNameVal)){
+    }else if((passwordVal.toLowerCase()).includes(userNameVal)){
         let h1 = document.createElement ("p");
         err.style.display = "block";
         h1.textContent = "Password cannot contain user name"; 
@@ -157,7 +157,7 @@ function loginValidation(e){
         if(!found){
             let h1 = document.createElement ("p");
             err.style.display = "block";
-            h1.textContent = "User doesnot exist Please register !!!"; 
+            h1.textContent = `User ${userNameLogin.value} doesnot exist Please register !!!`; 
             err.appendChild(h1);     
         }            
     }
